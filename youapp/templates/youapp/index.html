@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Youtube video downloader Web App</title>
+</head>
+<body style="align-items: center; text-align: center;height: fit-content; border: 3px solid green;">
+    <h2>Youtube video downloader Web App</h2>
+
+    <b><p style="color: coral;">Save your favorite youtube videos for free</p></b>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        <input type="text" name="given_url" value="{{ url }}" placeholder="Enter youtube link">
+        <button type="submit" name="fetch-vid" value="fetch-vid">Proceed</button>
+
+        <br>
+            <h3>{{ vidTitle }}</h3>
+            <img src="{{ vidThumbnail }}"/>
+        <br>
+
+        {% for x in stream %}
+            {{x.resolution}} <button type="submit" name="download-vid" value="{{ forloop.counter }}">Download</button> | 
+        {% endfor %}
+        <br><br>
+    </form>
+</body>
+</html>
